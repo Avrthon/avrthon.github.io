@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Dropdown</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      color: #fff;
+      padding: 40px;
+    }
+
+    .dropdown {
+      width: 320px;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown:hover {
+      transform: translateY(-2px);
+    }
+
+    .dropdown-header {
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-size: 1.1em;
+    }
+
+    .arrow {
+      transition: transform 0.35s ease;
+    }
+
+    .arrow.open {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 16px;
+      transition: max-height 0.45s cubic-bezier(0.25, 1, 0.3, 1),
+                  padding 0.3s ease;
+    }
+
+    .dropdown-content.open {
+      padding: 16px;
+    }
+  </style>
+  <style>
+    body {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+  
+    body.fade-out {
+      opacity: 0;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <h1>Modern Dropdown Transition</h1>
+
+  <div class="dropdown">
+    <div class="dropdown-header">
+      Fancy Dropdown
+      <span class="arrow">▼</span>
+    </div>
+
+    <div class="dropdown-content" id="dropdownContent">
+      <p>This is a modern dropdown with glassmorphism, easing curves, and a rotating arrow.</p>
+      <p>Add anything you want here — links, images, contact info, whatever fits your site.</p>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Toggles a dropdown panel with a smooth transition.
+     * @param {HTMLElement} panel - The dropdown content element.
+     * @param {HTMLElement} arrow - The arrow icon element.
+     */
+    function toggleDropdown(panel, arrow) {
+      const isOpen = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+
+      if (isOpen) {
+        panel.style.maxHeight = "0px";
+        panel.classList.remove("open");
+        arrow.classList.remove("open");
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.classList.add("open");
+        arrow.classList.add("open");
+      }
+    }
+
+    const content = document.getElementById("dropdownContent");
+    const header = document.querySelector(".dropdown-header");
+    const arrow = document.querySelector(".arrow");
+
+    header.addEventListener("click", () => toggleDropdown(content, arrow));
+  </script>
+
+</body>
+</html>

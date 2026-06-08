@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>La Nueva Merch</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+    </style>
+    <style>
+        body {
+          opacity: 1;
+          transition: opacity 0.5s ease;
+        }
+      
+        body.fade-out {
+          opacity: 0;
+        }
+      </style>
+      
+</head>
+
+<body>
+    <h1>Meet the Collective</h1>
+
+    <button id="addBtn">Add Numbers</button>
+    <button id="greetBtn">Greet User</button>
+
+    <div id="output"></div>
+    <img src="back.png" alt="A description of the image" width="300">
+    <a href="transition.html" style="
+        display:inline-block;
+        padding:10px 18px;
+        background:#4a6cff;
+        color:white;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:600;
+        ">
+        Go to transition page
+    </a>
+
+    <a href="examplesubfold/somepage.html" style="
+        display:inline-block;
+        padding:10px 18px;
+        background:#4a6cff;
+        color:white;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:600;
+        ">
+       the other thing
+    </a>
+
+    <script>
+        /**
+         * Adds two numbers together.
+         * @param {number} a - First number
+         * @param {number} b - Second number
+         * @returns {number} The sum of a and b
+         */
+        function add(a, b) {
+            return a + b;
+        }
+
+        /**
+         * Creates a greeting message.
+         * @param {string} name - The user's name
+         * @returns {string} A greeting message
+         */
+        function greet(name) {
+            return `Hello, ${name}!`;
+        }
+
+        const output = document.getElementById("output");
+
+        document.getElementById("addBtn").addEventListener("click", () => {
+            const result = add(5, 7);
+            output.textContent = `5 + 7 = ${result}`;
+        });
+
+        document.getElementById("greetBtn").addEventListener("click", () => {
+            const message = greet("Developer");
+            output.textContent = message;
+        });
+    </script>
+    <script>
+        // Fade in when the page loads
+        document.addEventListener("DOMContentLoaded", () => {
+          document.body.classList.remove("fade-out");
+        });
+      
+        /**
+         * Smoothly transitions to another page.
+         * @param {string} url - The URL of the page to navigate to.
+         */
+        function smoothNavigate(url) {
+          document.body.classList.add("fade-out");
+          setTimeout(() => {
+            window.location.href = url;
+          }, 500); // match CSS transition duration
+        }
+      </script>
+      
+</body>
+
+</html>
